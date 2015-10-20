@@ -16,10 +16,12 @@ gem 'devise'
 gem 'mini_magick'
 gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'nprogress-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'angular-rails-templates', '>= 0.2.0'
+gem 'rabl'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # gem 'therubyracer', platforms: :ruby
 

@@ -1,13 +1,16 @@
 #= require jquery
-#= require jquery.turbolinks
 #= require jquery_ujs
 #= require bootstrap-sprockets
-#= require nprogress
-#= require nprogress-turbolinks
+#= require momentjs/moment
 
-#= require turbolinks
+#= require angular/angular
+#= require angular-rails-templates
 
-NProgress.configure
-  showSpinner: false,
-  ease: 'ease',
-  speed: 500
+#= require angular-route/angular-route
+#= require angular-resource/angular-resource
+#= require angular-animate/angular-animate
+#= require angular-aria/angular-aria
+#= require angular-material/angular-material
+
+#= require_tree ./app
+#= require_tree ../templates
