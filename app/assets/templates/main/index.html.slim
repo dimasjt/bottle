@@ -1,0 +1,11 @@
+div layout="row"
+  md-card ng-repeat="product in products" flex="25"
+    img.md-card-image ng-src="{{product.image.url}}"
+    md-card-content
+      h2.md-title
+        | {{product.title}}
+      p
+        | {{product.description}}
+    .md-actions layout="row" layout-align="end center"
+      md-button ng-click="view(product.slug)" View
+

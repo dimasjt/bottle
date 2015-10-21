@@ -13,3 +13,6 @@ div layout="column" flex="60" flex-offset="20" ng-cloak="true"
       .form-group layout="row"
         md-button.md-raised.md-primary Login
         md-button.md-raised ng-href="/register" Register
+        md-button.md-raised ng-href="" ng-click="authenticate('facebook', {})"
+          ng-md-icon icon="facebook"
+          | Login With Facebook

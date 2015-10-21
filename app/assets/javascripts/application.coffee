@@ -12,6 +12,7 @@
 #= require angular-material/angular-material
 #= require angular-cookie/angular-cookie
 #= require ng-token-auth/dist/ng-token-auth
+#= require angular-material-icons/angular-material-icons
 
 #= require_tree ./app
 #= require_tree ../templates

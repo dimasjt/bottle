@@ -1,0 +1,20 @@
+div layout="column" flex="60" flex-offset="20" ng-cloak="true"
+  md-toolbar.md-primary
+    h1.md-toolbar-tools Edit Profile
+
+  md-content layout-padding="true"
+    form#registerForm ng-submit="updateAccount(user)"
+      md-input-container
+        label Email
+        input type="email" ng-model="user.email"
+        
+      md-input-container
+        label Name
+        input.form-control type="text" ng-model="user.name"
+      
+      md-input-container
+        label Nickname
+        input.form-control type="text" ng-model="user.nickname"
+
+      .form-group layout="row"
+        md-button.md-raised.md-primary Edit

@@ -4,9 +4,12 @@ div layout="row"
 
     md-button.md-raised ng-href="/" Home
 
-    md-button.md-raised ng-href="/register" Register
-    md-button.md-raised ng-href="/login" Login
-    md-button.md-raised ng-click="signOut()" ng-show="user.signedIn" Sign Out
+    div ng-show="!user.signedIn" layout="row"
+      md-button.md-raised ng-href="/register" Register
+      md-button.md-raised ng-href="/login" Login
+    div ng-show="user.signedIn" layout="row"
+      md-button.md-raised ng-href="/profile" Profile
+      md-button.md-raised href="#" ng-click="signOut()" Sign Out
 
 / nav.navbar.navbar-default
 /   .container

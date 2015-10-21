@@ -17,7 +17,8 @@
       "angular-route": "latest",
       "angular-resource": "latest",
       "ng-token-auth": "latest",
-      "angular-cookie": "latest"
+      "angular-cookie": "latest",
+      "angular-material-icons": "latest"
     }
   }
 }

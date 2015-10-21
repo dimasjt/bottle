@@ -3,7 +3,8 @@ var app = angular.module("BottleApp", [
   'ngRoute',
   'ngResource',
   'ng-token-auth',
-  'ngMaterial'
+  'ngMaterial',
+  'ngMdIcons'
 ]);
 
 // routes
@@ -27,9 +28,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
     proxyUrl:                '/proxy',
     omniauthWindowType:      'sameWindow',
     authProviderPaths: {
-      github:   '/auth/github',
-      facebook: '/auth/facebook',
-      google:   '/auth/google'
+      facebook: '/auth/facebook'
     },
     tokenFormat: {
       "access-token": "{{ token }}",
@@ -63,12 +62,16 @@ app.config(function($routeProvider, $locationProvider, $authProvider){
       controller: 'ProductController'
     })
     .when('/login', {
-      templateUrl: 'users/sessions/login.html',
-      controller: 'SessionsController'
+      templateUrl: 'users/login.html',
+      controller: 'UsersController'
     })
     .when('/register', {
-      templateUrl: 'users/registrations/new.html',
-      controller: 'RegistrationsController'
+      templateUrl: 'users/register.html',
+      controller: 'UsersController'
+    })
+    .when('/profile', {
+      templateUrl: 'users/profile.html',
+      controller: 'UsersController'
     })
 
   $locationProvider.html5Mode({
