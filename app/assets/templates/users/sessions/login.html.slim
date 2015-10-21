@@ -1,0 +1,15 @@
+div layout="column" flex="60" flex-offset="20" ng-cloak="true"
+  md-toolbar.md-primary
+    h1.md-toolbar-tools Login
+
+  md-content layout-padding="true"
+    form ng-submit="submitLogin(loginForm)" 
+      md-input-container
+        label Email
+        input.form-control ng-model="loginForm.email" type="text"
+      md-input-container
+        label Password
+        input.form-control ng-model="loginForm.password" type="password"
+      .form-group layout="row"
+        md-button.md-raised.md-primary Login
+        md-button.md-raised ng-href="/register" Register

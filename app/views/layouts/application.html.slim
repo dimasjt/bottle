@@ -7,5 +7,7 @@ html ng-app="BottleApp"
     = csrf_meta_tags
   body
     = render "layouts/menu"
-    .container
+    div layout="row"
       = yield
+      p
+        | {{user}}

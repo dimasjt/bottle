@@ -1,6 +1,5 @@
 #= require jquery
 #= require jquery_ujs
-#= require bootstrap-sprockets
 #= require momentjs/moment
 
 #= require angular/angular
@@ -11,6 +10,8 @@
 #= require angular-animate/angular-animate
 #= require angular-aria/angular-aria
 #= require angular-material/angular-material
+#= require angular-cookie/angular-cookie
+#= require ng-token-auth/dist/ng-token-auth
 
 #= require_tree ./app
 #= require_tree ../templates

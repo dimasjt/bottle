@@ -15,7 +15,9 @@
       "angular-aria": "latest",
       "angular-animate": "latest",
       "angular-route": "latest",
-      "angular-resource": "latest"
+      "angular-resource": "latest",
+      "ng-token-auth": "latest",
+      "angular-cookie": "latest"
     }
   }
 }

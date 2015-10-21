@@ -1,0 +1,30 @@
+div layout="column" flex="60" flex-offset="20" ng-cloak="true"
+  md-toolbar.md-primary
+    h1.md-toolbar-tools Register
+
+  md-content layout-padding="true"
+    form#registerForm ng-submit="submitRegistration(registerForm)"
+      md-input-container
+        label Email
+        input type="email" ng-model="registerForm.email"
+
+      md-input-container
+        label Password
+        input.form-control type="password" ng-model="registerForm.password"
+
+      md-input-container
+        label Password Confirmation
+        input.form-control type="password" ng-model="registerForm.password_confirmation"
+
+      md-input-container
+        label Name
+        input.form-control type="text" ng-model="registerForm.name"
+      
+      md-input-container
+        label Nickname
+        input.form-control type="text" ng-model="registerForm.nickname"
+
+      .form-group layout="row"
+        md-button.md-raised.md-primary Register
+        md-button.md-raised ng-href="/login" Login
+        md-button.md-raised ng-disabled="!user.signedIn"
