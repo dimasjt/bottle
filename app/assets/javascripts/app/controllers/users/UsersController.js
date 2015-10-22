@@ -1,5 +1,5 @@
-app.controller('UsersController', ['$scope', '$location', '$mdDialog', '$mdToast',
-  function($scope, $location, $mdDialog, $mdToast){
+app.controller('UsersController', ['$scope', '$location', '$mdDialog', '$mdToast', '$rootScope',
+  function($scope, $location, $mdDialog, $mdToast, $rootScope){
     // login
     $scope.loginForm = {};
 
@@ -41,6 +41,15 @@ app.controller('UsersController', ['$scope', '$location', '$mdDialog', '$mdToast
     $scope.$on('auth:account-update-error', function(ev, messages){
       $mdToast.show(
         $mdToast.simple().content(messages.errors.full_messages[0])
+      );
+    });
+
+    // logout
+    $rootScope.$on('auth:logout-success', function(ev){
+      $location.path('/login');
+
+      $mdToast.show(
+        $mdToast.simple().content('Successfully logout')
       );
     });
   }

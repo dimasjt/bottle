@@ -5,6 +5,4 @@ class User < ActiveRecord::Base
           :confirmable, :omniauthable
           
   include DeviseTokenAuth::Concerns::User
-
-  validates :nickname, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 end

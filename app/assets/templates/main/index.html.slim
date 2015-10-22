@@ -1,5 +1,29 @@
 div layout="row"
-  md-card ng-repeat="product in products" flex="25"
+  md-card flex="50" flex-offset="25"
+    md-toolbar.md-primary
+      h1.md-toolbar-tools Create Product
+    md-content.md-padding
+      form ng-submit="createProduct(newProduct)"
+        md-input-container
+          label Title
+          input type="text" ng-model="newProduct.title"
+
+        md-input-container
+          label Color
+          input type="text" ng-model="newProduct.color"
+
+        md-input-container
+          label Price
+          input type="text" ng-model="newProduct.price"
+
+        md-input-container
+          label Description
+          textarea ng-model="newProduct.description" columns="2"
+        .md-actions layout="row" layout-align="end center"
+          md-button.md-raised Submit
+
+md-content layout="row" layout-wrap="true"
+  md-card ng-repeat="product in products" flex="20"
     img.md-card-image ng-src="{{product.image.url}}"
     md-card-content
       h2.md-title
@@ -7,5 +31,4 @@ div layout="row"
       p
         | {{product.description}}
     .md-actions layout="row" layout-align="end center"
-      md-button ng-click="view(product.slug)" View
-
+      md-button ng-href="/products/{{product.slug}}" View

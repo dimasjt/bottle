@@ -4,7 +4,8 @@ app.factory('Products', ['$resource',
       all: $resource('/api/products').query(function(data){
         return data
       }),
-      one: $resource('/api/products/:productId', {productId: '@id'})
+      one: $resource('/api/products/:productId', { productId: '@id' }),
+      new: $resource('/api/products')
     }
   }
 ]);
