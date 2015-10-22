@@ -22,6 +22,7 @@ gem 'rabl'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'htmlcompressor'
 
 # gem 'therubyracer', platforms: :ruby
 
