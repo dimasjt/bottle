@@ -18,7 +18,9 @@
       "angular-resource": "latest",
       "ng-token-auth": "latest",
       "angular-cookie": "latest",
-      "angular-material-icons": "latest"
+      "angular-material-icons": "latest",
+      "ng-file-upload-shim": "latest",
+      "ng-file-upload": "latest"
     }
   }
 }
