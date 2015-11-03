@@ -10,7 +10,7 @@ app.controller('MainController', ['$scope', '$location', 'Products',
 
     $scope.createProduct = function(product){
       Products.new.save(product, function(data){
-        
+        Products.all.push(data)
       });
     }
   }
