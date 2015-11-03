@@ -3,7 +3,7 @@
  * progress, resize, thumbnail, preview, validation and CORS
  * FileAPI Flash shim for old browsers not supporting FormData
  * @author  Danial  <danial.farid@gmail.com>
- * @version 9.1.0
+ * @version 9.1.2
  */
 
 (function () {
@@ -294,7 +294,7 @@
       }
 
       if (FileAPI.staticPath == null) FileAPI.staticPath = basePath;
-      script.setAttribute('src', jsUrl || basePath + 'FileAPI.min.js');
+      script.setAttribute('src', jsUrl || basePath + 'FileAPI.js');
       document.getElementsByTagName('head')[0].appendChild(script);
     }
 
@@ -408,12 +408,6 @@ if (!window.FileReader) {
         _this.dispatchEvent(e);
       }
     };
-    this.readAsArrayBuffer = function (file) {
-      FileAPI.readAsBinaryString(file, listener);
-    };
-    this.readAsBinaryString = function (file) {
-      FileAPI.readAsBinaryString(file, listener);
-    };
     this.readAsDataURL = function (file) {
       FileAPI.readAsDataURL(file, listener);
     };
@@ -427,7 +421,7 @@ if (!window.FileReader) {
  * AngularJS file upload directives and services. Supoorts: file upload/drop/paste, resume, cancel/abort,
  * progress, resize, thumbnail, preview, validation and CORS
  * @author  Danial  <danial.farid@gmail.com>
- * @version 9.1.0
+ * @version 9.1.2
  */
 
 if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
@@ -448,7 +442,7 @@ if (window.XMLHttpRequest && !(window.FileAPI && FileAPI.shouldLoad)) {
 
 var ngFileUpload = angular.module('ngFileUpload', []);
 
-ngFileUpload.version = '9.1.0';
+ngFileUpload.version = '9.1.2';
 
 ngFileUpload.service('UploadBase', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
   var upload = this;
@@ -948,7 +942,7 @@ ngFileUpload.service('Upload', ['$parse', '$timeout', '$compile', '$q', 'UploadE
           files = valids;
         }
         var fixOrientation = upload.emptyPromise(files);
-        if (upload.attrGetter('ngfFixOrientation', attr, scope) !== false) {
+        if (upload.attrGetter('ngfFixOrientation', attr, scope) !== false && upload.isExifSupported()) {
           fixOrientation = applyExifRotations(files);
         }
         fixOrientation.then(function () {
@@ -1230,6 +1224,7 @@ ngFileUpload.directive('ngfSelect', ['$parse', '$timeout', '$compile', 'Upload',
       }
     };
     upload.dataUrl = function (file, disallowObjectUrl) {
+      if (!file) return upload.emptyPromise(file, file);
       if ((disallowObjectUrl && file.$ngfDataUrl != null) || (!disallowObjectUrl && file.$ngfBlobUrl != null)) {
         return upload.emptyPromise(disallowObjectUrl ? file.$ngfDataUrl : file.$ngfBlobUrl, file);
       }
@@ -2302,6 +2297,10 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 
   }
 
+  upload.isExifSupported = function() {
+    return window.FileReader && new FileReader().readAsArrayBuffer && upload.isResizeSupported();
+  };
+
   upload.orientation = function (file) {
     if (file.$ngfOrientation != null) {
       return upload.emptyPromise(file.$ngfOrientation);
@@ -2328,8 +2327,6 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 
   function applyTransform(ctx, orientation, width, height) {
     switch (orientation) {
-      case 1:
-        return ctx.transform(1, 0, 0, 1, 0, 0);
       case 2:
         return ctx.transform(-1, 0, 0, 1, width, 0);
       case 3:
@@ -2354,7 +2351,7 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 
     var deferred = $q.defer();
     upload.orientation(file).then(function (orientation) {
-      if (!orientation || orientation > 8) {
+      if (!orientation || orientation < 2 || orientation > 8) {
         deferred.resolve(file);
       }
       upload.dataUrl(file, true).then(function (url) {
